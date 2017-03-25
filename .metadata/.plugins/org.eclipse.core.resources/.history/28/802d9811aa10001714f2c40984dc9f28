@@ -1,0 +1,20 @@
+package com.codility.test;
+
+public class Countries {
+
+	public static void main(String[] args) {
+		Countries ct = new Countries();
+		int[][] A = { { 5, 4, 4 }, { 4, 3, 4 }, { 3, 2, 4 }, { 2, 2, 2 }, { 3, 3, 4 }, { 1, 4, 4 }, { 4, 1, 1 } };
+		System.out.println("\n\ncountries: " + ct.solution(A));
+	}
+
+	public int solution(int[][] A) {
+		int result = 0;
+		
+		return result;
+	}
+	
+	public void visit(int[][] A, int x, int y) {
+				
+	}
+}
