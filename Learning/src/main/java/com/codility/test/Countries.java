@@ -1,56 +1,24 @@
 package com.codility.test;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Countries {
+	
 
-	public static void main(String[] args) {
-		Countries ct = new Countries();
-		int[][] A = { { 5, 4, 4 }, { 4, 3, 4 }, { 3, 2, 4 }, { 2, 2, 2 }, { 3, 3, 4 }, { 1, 4, 4 }, { 4, 1, 1 } };
-		System.out.println("\n\ncountries: " + ct.solution(A));
-	}
+	// you can also use imports, for example:
+	// import java.util.*;
 
-	boolean isSame(int value, int M[][], int row, int col, boolean visited[][]) {
-		// row number is in range, column number is in range and value is same as country visted before
-		int ROW = M.length;
-		int COL = M[0].length;
-		return (row >= 0) && (row < ROW) && (col >= 0) && (col < COL) && (M[row][col] == value && !visited[row][col]);
-	}
+	// you can write to stdout for debugging purposes, e.g.
+	// System.out.println("this is a debug message");
 
-	// A utility function to do DFS for a 2D boolean matrix.
-	// It only considers the orthogonal 4 neighbors
-	void DFS(int M[][], int row, int col, boolean visited[][]) {
-		// These arrays are used to get row and column numbers north, south, east, west
-		int rowNbr[] = new int[] { -1, 1, 0, 0 };
-		int colNbr[] = new int[] { 0, 0, 1, -1 };
-
-		// Mark this cell as visited
-		visited[row][col] = true;
-
-		// Recur for all connected parts of same county
-		for (int k = 0; k < 4; ++k)
-			if (isSame(M[row][col], M, row + rowNbr[k], col + colNbr[k], visited))
-				DFS(M, row + rowNbr[k], col + colNbr[k], visited);
-	}
-
-	// The main function that returns count of islands in a given
-	// boolean 2D matrix
-	public int solution(int M[][]) {
-		// Make a bool array to mark visited cells.
-		// Initially all cells are unvisited
-		int ROW = M.length;
-		int COL = M[0].length;
-		boolean visited[][] = new boolean[ROW][COL];
-
-		// Initialize count as 0 and travese through the all cells
-		// of given matrix
-		int count = 0;
-		for (int i = 0; i < ROW; ++i)
-			for (int j = 0; j < COL; ++j)
-				if (!visited[i][j]) // If a cell with
-				{ // Visit all
-					DFS(M, i, j, visited);
-					++count;
-				}
-
-		return count;
+	public int solution(int[][] A) {
+		int result = 0;
+		for (int i = 0; i < A.length; i++) {
+			for (int j = 0; j < A[i].length; j++) {
+				if ((i == 0 || A[i - 1][j] - A[i][j] != 0) && (j == 0 || A[i][j - 1] - A[i][j] != 0))
+					result++;
+			}
+		}
+		return result;
 	}
 }
