@@ -19,7 +19,7 @@ public class Decimalzip {
 			}
 		}
 		long C = Long.parseLong(strC);
-		return C < 100000000 ? (int) C : -1;
+		return C > 100000000 ? -1: (int) C;
 	}
 
 }
